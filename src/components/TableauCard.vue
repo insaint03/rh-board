@@ -10,19 +10,18 @@ import CardSection from '@/components/CardSection.vue';
 export default {
     name: 'TableauCard',
     mounted() {
-        console.log(this.$setup);
-        let utils = this.$utils;
-        let { src, host, endpoint, params} = this.$setup.tableau;
+        let { src, host, endpoint, params} = this.setup.tableau;
+        console.log(this.setup.tableau);
         let placeholder = this.$refs.viz;
-        let location = utils.url(host,endpoint(this.path));
+        let location = endpoint(this.path, host);
         let options = Object.assign({
         }, params, this.params || {});
-        utils.include(src)
-        utils.until(()=>window.tableau)
+        this.utils.include(src)
+        this.utils.until(()=>window.tableau)
             .then((tab)=>{
                 this.viz = new tab.Viz(placeholder, location, options)
             });
-        // 
+        
     },
     props: [
         'path',

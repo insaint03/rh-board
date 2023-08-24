@@ -53,6 +53,8 @@ const builder = (async function(selector, base) {
   // register routes
   const router =new VueRouter({
     routes,
+    boards,
+    setup,
     mode: 'history',
     base: base || process.env.BASE_URL,
   });

@@ -4,8 +4,8 @@ const setup = {
     tableau: {
         host: 'https://public.tableau.com',
         src: 'https://public.tableau.com/javascripts/api/tableau-2.9.2.min.js',
-        endpoint(pathname){
-            return `${this.host}/views/${pathname}`;
+        endpoint(pathname, host){
+            return `${host || this.host}/views/${pathname}`;
         },
         params: {
             display_static_image: 'y',
@@ -26,7 +26,7 @@ const setup = {
 };
 
 setup.install = function(Vue) {
-    Vue.setup = setup;
+    Vue.prototype.setup = setup;
 }
 
 export default setup;

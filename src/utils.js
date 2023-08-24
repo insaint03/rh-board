@@ -96,7 +96,7 @@ let utils = {
 }
 
 utils.install = function(Vue) {
-    Vue.utils = this;
+    Vue.prototype.utils = utils;
 }
 
 export default utils;

@@ -1,17 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <md-app class="md-layout">
+      <md-app-content>
+        <router-view />
+      </md-app-content>
+    </md-app>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import TableauCard from '@/components/TableauCard.vue';
+// import boards from '@/boards.js';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  props: {
+    configure: Object,
+    
+  },
+  computed: {
+    routes() {
+      return this.$router.getRoutes().map((r)=>r.path);
+    }
+  },
+  // components: {
+  //   TableauCard,
+  // },
+  mounted() {
+  },
+  data() {
+    return {
+      // tbs: boards.tableau,
+    };
   }
 }
 </script>

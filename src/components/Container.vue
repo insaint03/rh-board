@@ -6,12 +6,7 @@
             <!-- card section -->
             <div class="md-layout-item" v-for="cell,ci in row" :key="`it-cell-${ri}.${ci}`">
                 <!-- cell tableau -->
-                <template v-if="cell.tableau">
-                    <tableau-card :path="cell.tableau" />
-                </template>
-                <template v-else-if="cell.d3">
-                    <graph-card v-bind="cell" />
-                </template>
+                <component :is="binding_component(cell)" v-bind="cell" />
             </div>
         </div>
     </div>
@@ -26,6 +21,21 @@ export default {
     components: {
         tableauCard,
         graphCard,
+    },
+    methods: {
+        binding_component(cell) {
+            switch(true) {
+                case cell.tableau!=null: return 'tableau-card';
+                case cell.d3 != null: return 'graph-card';
+                case cell.text != null: return 'pre';
+                default: return 'div';
+            }
+        },
+        binding_attributes(cell) {
+            const excepts = ['tableau','d3','text'];
+            return Object.fromEntries(Object.entries(cell)
+                .filter(([k,])=>!excepts.includes(k)));
+        },
     },
     data() {
         return {

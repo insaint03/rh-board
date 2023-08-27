@@ -18,7 +18,7 @@ const setup = {
         },
     },
     d3: {
-        src: 'https://cdn.jsdelivr.net/npm/d3@7'
+        src: 'https://cdn.jsdelivr.net/npm/d3@7',
     },
     datafile: process.env.BASE_URL+'boards.json',
     includes: [

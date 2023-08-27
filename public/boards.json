@@ -5,14 +5,15 @@
                 "cols": "12",
                 "width": null,
                 "height": "50vh",
-                "tableau": "MakeoverMonday2023Week31-DrinkingFountainsinMilan/MM2023W31"
+                "tableau": "MakeoverMonday2023Week31-DrinkingFountainsinMilan/MM2023W31",
+                "title": "제목 <Drinking Fountains in Milan>",
+                "subtitle": "부제목 <작성자: Andy Kriebel>",
+                "description": "<설명>"
             }
         ],
         [
             {
                 "d3": "network",
-                "width": null,
-                "height": null,
                 "data": {
                     "nodes": [
                         {
@@ -69,6 +70,19 @@
                             "style": {}
                         }
                     ]
+                },
+                "styles" : {
+                    "background": {
+
+                    },
+                    "nodes": {
+                        "stroke": "#fff",
+                        "stroke-width": 1.5
+                    },
+                    "links": {
+                        "stroke": "#999",
+                        "stroke-opacity": 0.6
+                    }
                 }
             }
         ]

@@ -1,5 +1,5 @@
 <template>
-    <CardSection class="tableau-card">
+    <CardSection class="tableau-card" v-bind="bindings">
         <div class="tableau-placeholder" ref="viz" /> 
     </CardSection>
 </template>
@@ -11,28 +11,42 @@ export default {
     name: 'TableauCard',
     mounted() {
         let { src, host, endpoint, params} = this.setup.tableau;
-        console.log(this.setup.tableau);
         let placeholder = this.$refs.viz;
-        let location = endpoint(this.path, host);
+        let location = endpoint(this.tableau, host);
         let options = Object.assign({
         }, params, this.params || {});
         this.utils.include(src)
-        this.utils.until(()=>window.tableau)
-            .then((tab)=>{
-                this.viz = new tab.Viz(placeholder, location, options)
+        this.utils.until(()=>window.tableau && placeholder)
+            .then(()=>{
+                this.viz = new window.tableau.Viz(placeholder, location, options)
             });
         
     },
     props: [
         'path',
         'params',
+        'tableau',
+        'title',
+        'subtitle',
+        'description',
     ],
     components: {
         CardSection,
     },
+    computed: {
+    },
     data() {
         return {
             viz: null,
+            bindings: {
+                title: this.title,
+                subtitle: this.subtitle,
+                description: this.description,
+                actions: [
+                    {icon: 'link', click: ()=>window.open(this.setup.tableau.host, '_blank')},
+                    {icon: 'mail', click: ()=>alert(`tableau ${this.title}`)},
+                ]
+            }
         }
     }
 }

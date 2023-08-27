@@ -13,12 +13,15 @@ Vue.config.productionTip = false
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
+import 'material-icons/iconfont/material-icons.css';
+
 // use Vue-Router
 import VueRouter from 'vue-router'
 import container from '@/components/Container'
 
 // router
 Vue.use(VueRouter);
+
 
 // start on document ready
 import utils from '@/utils';

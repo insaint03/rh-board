@@ -14,19 +14,21 @@
 
 <script>
 import tableauCard from '@/components/TableauCard'
-import graphCard from '@/components/GraphCard'
+// import graphCard from '@/components/GraphCard'
+import networkCard from '@/components/NetworkCard'
 
 export default {
     name: 'containerSection',
     components: {
         tableauCard,
-        graphCard,
+        // graphCard,
+        networkCard,
     },
     methods: {
         binding_component(cell) {
             switch(true) {
                 case cell.tableau!=null: return 'tableau-card';
-                case cell.d3 != null: return 'graph-card';
+                case cell.d3 != null: return 'network-card';
                 case cell.text != null: return 'pre';
                 default: return 'div';
             }

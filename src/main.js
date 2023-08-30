@@ -58,7 +58,7 @@ const builder = (async function(selector, base) {
     routes,
     boards,
     setup,
-    mode: 'history',
+    // mode: 'history',
     base: base || process.env.BASE_URL,
   });
 

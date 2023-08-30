@@ -8,6 +8,8 @@ const setup = {
             return `${host || this.host}/views/${pathname}`;
         },
         params: {
+            hideTabs: true,
+            hideToolbar: true,
             display_static_image: 'y',
             bootstrapWhenNotified: 'true',
             embed: 'true',
@@ -19,6 +21,8 @@ const setup = {
     },
     d3: {
         src: 'https://cdn.jsdelivr.net/npm/d3@7',
+        show_label_interval: 15, // 15초, <0 perpetual
+        update_frame: 100, // 0.1 초 화면 갱신
     },
     datafile: process.env.BASE_URL+'boards.json',
     includes: [

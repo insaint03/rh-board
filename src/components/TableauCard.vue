@@ -13,8 +13,9 @@ export default {
         let { src, host, endpoint, params} = this.setup.tableau;
         let placeholder = this.$refs.viz;
         let location = endpoint(this.tableau, host);
-        let options = Object.assign({
-        }, params, this.params || {});
+        let options = Object.assign({}, params, this.params || {});
+
+        console.log('tableau options', options);
         this.utils.include(src)
         this.utils.until(()=>window.tableau && placeholder)
             .then(()=>{
@@ -40,8 +41,6 @@ export default {
             viz: null,
             bindings: {
                 title: this.title,
-                subtitle: this.subtitle,
-                description: this.description,
                 actions: [
                     {icon: 'link', click: ()=>window.open(this.setup.tableau.host, '_blank')},
                     {icon: 'mail', click: ()=>alert(`tableau ${this.title}`)},
